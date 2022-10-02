@@ -1,0 +1,82 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 40px;
+}
+
+.logo {
+  height: 40px;
+}
+
+.winnings {
+  &__container {
+    background-color: rgba(115, 115, 115, 0.3);
+    width: 200px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: -1.5px;
+      right: -1.5px;
+      border-top: 3px solid white;
+      border-right: 3px solid white;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      top: -1.5px;
+      left: -1.5px;
+      border-top: 3px solid white;
+      border-left: 3px solid white;
+    }
+
+    &--inner {
+      &::before {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        bottom: -1.5px;
+        right: -1.5px;
+        border-bottom: 3px solid white;
+        border-right: 3px solid white;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 14px;
+        height: 14px;
+        position: absolute;
+        bottom: -1.5px;
+        left: -1.5px;
+        border-bottom: 3px solid white;
+        border-left: 3px solid white;
+      }
+    }
+
+    span {
+      color: white;
+      font-weight: 600;
+      font-size: 20px;
+    }
+  }
+}
+
+.footer {
+  padding: 40px;
+}

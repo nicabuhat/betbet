@@ -1,0 +1,49 @@
+.bubble {
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(0, 17, 57, 0.19) 33.65%,
+    #02a5df 100%
+  );
+  border: 3px solid #02a5df;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+
+  animation: float 15s ease-in-out infinite;
+}
+
+#section-bubbles {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px;
+}
+
+@keyframes float {
+  25% {
+    transform: rotate(random(20) * (-1) * 1 + deg) translateY((random(40)) + px)
+      translateX(random(40) + px);
+  }
+
+  50% {
+    transform: rotate(random(20) * (-1) * 1 + deg) translateY((random(40)) + px)
+      translateX(random(40) + px);
+  }
+
+  75% {
+    transform: rotate(random(20) * 2 + deg) translateY((random(40)) + px)
+      translateX(random(40) + px);
+  }
+}

@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { WinningsProvider } from './helpers/WinningsProvider';
+import { BetsProvider } from './helpers/BetsProvider';
+import { toggleBetSection } from './helpers/Helpers';
+import Header from './components/Header';
+import BetSection from './components/BetSection';
+import BubblesSection from './components/BubblesSection';
+import './styles/main.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <WinningsProvider>
+      <Header />
+      <main className='main'>
+        <BetsProvider>
+          <BetSection />
+        </BetsProvider>
+        <BubblesSection />
+      </main>
+      <footer className='footer'>
+        <button
+          className=' btn btn--bet'
+          id='btn-bet'
+          onClick={toggleBetSection}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          place bet
+        </button>
+      </footer>
+    </WinningsProvider>
   );
 }
 
