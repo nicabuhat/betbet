@@ -10,6 +10,8 @@
 }
 
 .winnings {
+  cursor: pointer;
+
   &__container {
     background-color: rgba(115, 115, 115, 0.3);
     width: 200px;
@@ -69,10 +71,8 @@
       }
     }
 
-    span {
-      color: white;
-      font-weight: 600;
-      font-size: 20px;
-    }
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
   }
 }

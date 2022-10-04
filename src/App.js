@@ -3,6 +3,7 @@ import { WinningsProvider } from './helpers/WinningsProvider';
 import { BetsProvider } from './helpers/BetsProvider';
 import { toggleBetSection } from './helpers/Helpers';
 import Header from './components/Header';
+import CashTabSection from './components/CashTabSection';
 import BetSection from './components/BetSection';
 import BubblesSection from './components/BubblesSection';
 import ChallengeSection from './components/ChallengeSection';
@@ -16,13 +17,14 @@ function App() {
       <Header />
       <main className='main'>
         <BetsProvider>
+          <CashTabSection />
           <BetSection />
           <BubblesSection />
           <ChallengeSection />
           <ChallengeResultSection />
         </BetsProvider>
       </main>
-      <footer className='footer'>
+      <footer id='footer'>
         <button
           className=' btn btn--bet'
           id='btn-bet'

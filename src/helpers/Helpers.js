@@ -25,3 +25,13 @@ export const toggleChallengeResultSection = () => {
       ? 'none'
       : 'flex';
 };
+export const toggleCashtabSection = () => {
+  const cashtabSection = document.getElementById('cashtab-section');
+  cashtabSection.style.display =
+    getComputedStyle(cashtabSection, null).display === 'flex' ? 'none' : 'flex';
+};
+export const toggleFooter = () => {
+  const footer = document.getElementById('footer');
+  footer.style.display =
+    getComputedStyle(footer, null).display === 'flex' ? 'none' : 'flex';
+};
