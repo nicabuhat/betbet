@@ -1,10 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { WinningsProvider } from './helpers/WinningsProvider';
 import { BetsProvider } from './helpers/BetsProvider';
 import { toggleBetSection } from './helpers/Helpers';
 import Header from './components/Header';
 import BetSection from './components/BetSection';
 import BubblesSection from './components/BubblesSection';
+import ChallengeSection from './components/ChallengeSection';
+import ChallengeResultSection from './components/ChallengeResultSection';
+import ResultListSection from './components/ResultListSection';
 import './styles/main.scss';
 
 function App() {
@@ -15,6 +18,8 @@ function App() {
         <BetsProvider>
           <BetSection />
           <BubblesSection />
+          <ChallengeSection />
+          <ChallengeResultSection />
         </BetsProvider>
       </main>
       <footer className='footer'>
@@ -25,6 +30,7 @@ function App() {
         >
           place bet
         </button>
+        <ResultListSection />
       </footer>
     </WinningsProvider>
   );

@@ -1,12 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Bubble from './Bubble';
-import { BetsContext, BetsDispatchContext } from '../helpers/BetsProvider';
+import { BetsContext } from '../helpers/BetsProvider';
 
 const BubblesSection = () => {
-  const bets = useContext(BetsContext);
+  const bets = useContext(BetsContext).bets;
   return (
     <section id='section-bubbles'>
-      {bets.length > 0 && bets.map((bet) => <Bubble bet={bet} key={bet.id} />)}
+      {bets.length > 0 &&
+        bets.map((bet) => <Bubble bet={bet} key={bet.id}></Bubble>)}
     </section>
   );
 };

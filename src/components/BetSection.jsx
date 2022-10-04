@@ -5,8 +5,8 @@ import { toggleBetSection } from '../helpers/Helpers';
 const BetSection = () => {
   const [bet, setBet] = useState({});
 
-  const updateBets = useContext(BetsDispatchContext);
-  const bets = useContext(BetsContext);
+  const updateBets = useContext(BetsDispatchContext).updateBets;
+  const bets = useContext(BetsContext).bets;
 
   const handleSelect = (event) => {
     const target = event.target;

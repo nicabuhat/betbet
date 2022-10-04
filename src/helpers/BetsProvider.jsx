@@ -1,21 +1,25 @@
 import React, { createContext, useState, useEffect } from 'react';
-import BetSection from '../components/BetSection';
-import BubblesSection from '../components/BubblesSection';
-import Bubble from '../components/Bubble';
 
 const BetsContext = createContext();
 const BetsDispatchContext = createContext();
 
 function BetsProvider({ children }) {
   const [bets, setBets] = useState([]);
+  const [challenge, setChallenge] = useState({});
 
   useEffect(() => {
-    updateBubbleSize(bets);
+    if (bets.length > 0) {
+      updateBubbleSize(bets[bets.lenght - 1]);
+    }
   });
 
   const updateBets = (bet) => {
     const id = '_id' + Math.random().toString(16).slice(2);
     setBets([...bets, { ...bet, id: id, size: 0 }]);
+  };
+
+  const removeBet = (bet) => {
+    setBets(bets.filter((b) => b.id !== bet.id));
   };
 
   const updateBubbleSize = (bet) => {
@@ -34,9 +38,15 @@ function BetsProvider({ children }) {
     });
   };
 
+  const getBubbleClicked = (bet) => {
+    setChallenge(bet);
+  };
+
   return (
-    <BetsContext.Provider value={bets}>
-      <BetsDispatchContext.Provider value={updateBets}>
+    <BetsContext.Provider value={{ bets, challenge }}>
+      <BetsDispatchContext.Provider
+        value={{ updateBets, removeBet, getBubbleClicked }}
+      >
         {children}
       </BetsDispatchContext.Provider>
     </BetsContext.Provider>
