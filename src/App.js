@@ -1,3 +1,4 @@
+import React, { useContext } from 'react';
 import { WinningsProvider } from './helpers/WinningsProvider';
 import { BetsProvider } from './helpers/BetsProvider';
 import { toggleBetSection } from './helpers/Helpers';
@@ -13,8 +14,8 @@ function App() {
       <main className='main'>
         <BetsProvider>
           <BetSection />
+          <BubblesSection />
         </BetsProvider>
-        <BubblesSection />
       </main>
       <footer className='footer'>
         <button

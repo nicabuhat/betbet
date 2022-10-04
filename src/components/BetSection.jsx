@@ -1,63 +1,25 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { BetsDispatchContext } from '../helpers/BetsProvider';
+import React, { useContext, useState } from 'react';
+import { BetsContext, BetsDispatchContext } from '../helpers/BetsProvider';
 import { toggleBetSection } from '../helpers/Helpers';
-
-class Bubble {
-  constructor(bubble) {
-    this.id = '_id' + Math.random().toString(16).slice(2);
-    this.bet = bubble.bet;
-    this.secret = bubble.secret;
-    this.size = bubble.size;
-  }
-
-  createBubbleDiv() {
-    const sectionBubbles = document.getElementById('section-bubbles');
-    const newBubble = <Bubble id={this.id} bet={this.bet} />;
-    sectionBubbles.append(newBubble);
-  }
-}
 
 const BetSection = () => {
   const [bet, setBet] = useState({});
-  const _bet = new Bubble(bet);
 
   const updateBets = useContext(BetsDispatchContext);
-  const bets = useContext(BetsDispatchContext);
+  const bets = useContext(BetsContext);
 
   const handleSelect = (event) => {
     const target = event.target;
     if (target.name === 'bet')
-      setBet(Object.assign(_bet, { bet: target.value }));
-    else setBet(Object.assign(_bet, { secret: target.value }));
+      setBet(Object.assign(bet, { ...bet, bet: Number(target.value) }));
+    else setBet(Object.assign(bet, { ...bet, secret: Number(target.value) }));
   };
-
-  useEffect(() => {
-    updateBubbleSize(bets);
-  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    bet.createBubbleDiv();
     updateBets(bet);
-    event.target.reset();
     toggleBetSection();
-  };
-
-  const updateBubbleSize = (bets) => {
-    const summation = (total, bet) => {
-      return total + Number(bet.bet);
-    };
-
-    const total = bets.reduce(summation, 0);
-
-    bets = bets.map((bet) => {
-      const size = `${Math.floor((bet.bet / total) * 100 + 80)}px`;
-      const bubble = document.getElementById(bet.id);
-      bubble.style.height = size;
-      bubble.style.width = size;
-      return bet;
-    });
-
+    event.target.reset();
     console.log(bets);
   };
 
