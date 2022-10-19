@@ -18,7 +18,18 @@
   font-size: 2rem;
   font-weight: 700;
 
-  // animation: float 15s linear infinite alternate;
+  animation: float 10s infinite;
+  pointer-events: none;
+}
+
+.random {
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    rgb(255, 33, 208, 0.25) 33.65%,
+    rgb(255, 33, 208, 0.5) 100%
+  );
+  border: 3px solid var(--cl-pink);
+  pointer-events: auto;
 }
 
 #section-bubbles {
@@ -33,15 +44,15 @@
 
 @keyframes float {
   25% {
-    transform: translateY((random(40)) + px) translateX(random(40) + px);
+    transform: translateY((random(30)) + px) translateX(random(30) + px);
   }
 
   50% {
-    transform: translateY((random(40)) + px) translateX(random(40) + px);
+    transform: translateY((random(30)) + px) translateX(random(30) + px);
   }
 
   75% {
-    transform: translateY((random(40)) + px) translateX(random(40) + px);
+    transform: translateY((random(30)) + px) translateX(random(30) + px);
   }
 }
 // @keyframes float {

@@ -17,10 +17,9 @@ const BetSection = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateBets(bet);
+    updateBets({ ...bet, user: 1 });
     toggleBetSection();
     event.target.reset();
-    console.log(bets);
   };
 
   return (
@@ -40,6 +39,7 @@ const BetSection = () => {
                     className='betInput'
                     value='100'
                     onChange={handleSelect}
+                    required
                   />
                   <span>100</span>
                 </label>
@@ -147,6 +147,7 @@ const BetSection = () => {
                 className='secretInput'
                 value='0'
                 onChange={handleSelect}
+                required
               />
               <span>0</span>
             </label>

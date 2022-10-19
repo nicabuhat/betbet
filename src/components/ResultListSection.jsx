@@ -16,7 +16,7 @@ const ResultListSection = () => {
             return (
               <>
                 <span>{transaction.transaction.bet}</span>
-                <span>{transaction.result}</span>
+                <span>{transaction.result > 0 ? 'won' : 'lose'}</span>
                 <span>{transaction.balance}</span>
               </>
             );

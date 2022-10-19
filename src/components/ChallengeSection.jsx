@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { BetsContext, BetsDispatchContext } from '../helpers/BetsProvider';
 import { WinningDispatchContext } from '../helpers/WinningsProvider';
 import {
@@ -9,7 +9,7 @@ import {
 
 const ChallengeSection = () => {
   const radioRef = useRef();
-
+  const bets = useContext(BetsContext).bets;
   const challenge = useContext(BetsContext).challenge;
   const removeBet = useContext(BetsDispatchContext).removeBet;
   const updateWinnings = useContext(WinningDispatchContext).updateWinnings;
@@ -17,6 +17,35 @@ const ChallengeSection = () => {
   const updateTransactions = useContext(
     WinningDispatchContext,
   ).updateTransactions;
+
+  const [randomChallege, setRandomChallenge] = useState({});
+
+  const randomChallenge = () => {
+    const index = Math.floor(Math.random() * bets.length);
+    const secret = Math.random() > 0.5 ? 1 : 0;
+    const challenge = bets.filter((bet) => bet.id === bets[index].id)[0];
+    const result =
+      challenge.secret === secret ? challenge.bet : challenge.bet * -1;
+    setRandomChallenge(challenge);
+    console.log(result);
+  };
+
+  useEffect(() => {
+    if (bets.length > 0) {
+      const interval = setInterval(
+        // set number every 5s
+        () => {
+          if (bets.length > 0) {
+            randomChallenge();
+          }
+        },
+        5000,
+      );
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  });
 
   const compareWinnings = (e) => {
     const challengeSecret = Number(e.target.value);
