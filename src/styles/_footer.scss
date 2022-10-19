@@ -12,12 +12,23 @@
 }
 
 .transactions {
-  border-collapse: collapse;
   width: 50vw;
   padding: 20px;
   border: 3px solid #ff21d0;
   display: grid;
   grid-template-rows: 2em repeat(auto, 1fr);
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 1em;
+}
+
+@media only screen and (max-width: 992px) {
+  .transactions {
+    h2 {
+      font-size: 0.85em;
+    }
+
+    font-size: 0.75em;
+    width: 98%;
+    margin: 0 auto;
+  }
 }

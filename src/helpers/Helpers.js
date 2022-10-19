@@ -35,29 +35,8 @@ export const toggleFooter = () => {
   footer.style.display =
     getComputedStyle(footer, null).display === 'flex' ? 'none' : 'flex';
 };
-
-// export const generateRandomBubbles = (randomBubble) => {
-//   let stopAt = 20; // for testing, setting a maximum of 15 iterations
-//   let maxRandomDelay = 10000; // max 1 second delay for testing
-//   let randomTime = Math.floor(Math.random() * maxRandomDelay);
-
-//   const delay = async (ms) =>
-//     new Promise((res) =>
-//       setTimeout(() => {
-//         res(ms);
-//       }, ms),
-//     );
-
-//   const myTimer = () => {
-//     delay(randomTime)
-//       .then((r) => {
-//         updateBets(randomBubble());
-//         console.log(r);
-//       })
-//       .then(() => {
-//         if (stopAt-- > 0) myTimer();
-//       });
-//   };
-
-//   return myTimer();
-// };
+export const generateRandomUser = async () => {
+  let results = await fetch('https://randomuser.me/api/?results=1');
+  const data = await results.json();
+  return data.results[0].login.username;
+};

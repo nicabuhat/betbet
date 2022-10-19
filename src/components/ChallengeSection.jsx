@@ -5,6 +5,7 @@ import {
   toggleBubblesSection,
   toggleChallengeSection,
   toggleChallengeResultSection,
+  generateRandomUser,
 } from '../helpers/Helpers';
 
 const ChallengeSection = () => {
@@ -18,16 +19,16 @@ const ChallengeSection = () => {
     WinningDispatchContext,
   ).updateTransactions;
 
-  const [randomChallege, setRandomChallenge] = useState({});
-
-  const randomChallenge = () => {
+  const randomChallenge = async () => {
     const index = Math.floor(Math.random() * bets.length);
     const secret = Math.random() > 0.5 ? 1 : 0;
     const challenge = bets.filter((bet) => bet.id === bets[index].id)[0];
+    const user = await generateRandomUser();
     const result =
       challenge.secret === secret ? challenge.bet : challenge.bet * -1;
-    setRandomChallenge(challenge);
     console.log(result);
+    updateTransactions({ ...challenge, user: user }, result);
+    removeBet(challenge);
   };
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const ChallengeSection = () => {
             randomChallenge();
           }
         },
-        5000,
+        10000,
       );
       return () => {
         clearInterval(interval);
@@ -55,7 +56,7 @@ const ChallengeSection = () => {
 
     updateWinnings(result);
     updateResult(result);
-    updateTransactions(challenge, result);
+    updateTransactions({ ...challenge, user: 0 }, result);
     removeBet(challenge);
     radioRef.current.checked = false;
 

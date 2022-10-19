@@ -156,3 +156,60 @@ input[type='submit'] {
   height: 240px;
   width: 240px;
 }
+
+@media only screen and (max-width: 768px) {
+  #section-form {
+    font-size: 0.5em;
+    height: auto;
+    padding: 0;
+  }
+
+  .form {
+    &--input {
+      flex-direction: column;
+    }
+    &--group {
+      margin: 0;
+      padding: 20px;
+
+      &-secret {
+        width: 100%;
+
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+        }
+
+        label {
+          width: 100%;
+        }
+      }
+    }
+    .btn {
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+  }
+
+  #section-challenge {
+    height: 100vh;
+    width: 100vw;
+
+    overflow: hidden;
+
+    form {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      order: 2;
+
+      .label {
+        height: 30vh;
+      }
+    }
+  }
+}

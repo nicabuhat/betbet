@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { BetsContext, BetsDispatchContext } from '../helpers/BetsProvider';
-import { toggleBetSection } from '../helpers/Helpers';
+import { toggleBetSection, generateRandomUser } from '../helpers/Helpers';
 
 const BetSection = () => {
   const [bet, setBet] = useState({});
@@ -15,9 +15,9 @@ const BetSection = () => {
     else setBet(Object.assign(bet, { ...bet, secret: Number(target.value) }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    updateBets({ ...bet, user: 1 });
+    updateBets({ ...bet, user: 0 });
     toggleBetSection();
     event.target.reset();
   };
@@ -140,27 +140,29 @@ const BetSection = () => {
           </div>
           <div className='form--group form--group-secret'>
             <h2 className='subheading'>secret</h2>
-            <label className='label label--secret'>
-              <input
-                type='radio'
-                name='secret'
-                className='secretInput'
-                value='0'
-                onChange={handleSelect}
-                required
-              />
-              <span>0</span>
-            </label>
-            <label className='label label--secret'>
-              <input
-                type='radio'
-                name='secret'
-                className='secretInput'
-                value='1'
-                onChange={handleSelect}
-              />
-              <span>1</span>
-            </label>
+            <div>
+              <label className='label label--secret'>
+                <input
+                  type='radio'
+                  name='secret'
+                  className='secretInput'
+                  value='0'
+                  onChange={handleSelect}
+                  required
+                />
+                <span>0</span>
+              </label>
+              <label className='label label--secret'>
+                <input
+                  type='radio'
+                  name='secret'
+                  className='secretInput'
+                  value='1'
+                  onChange={handleSelect}
+                />
+                <span>1</span>
+              </label>
+            </div>
           </div>
         </div>
         <input

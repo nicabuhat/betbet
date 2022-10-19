@@ -17,7 +17,7 @@ function BetsProvider({ children }) {
   const updateBets = (bet) => {
     if (bet.bet) {
       const id = '_id' + Math.random().toString(16).slice(2);
-      setBets([...bets, { ...bet, id: id, size: 0 }]);
+      setBets([...bets, { ...bet, id: id, size: 0, key: id }]);
     }
   };
 
@@ -44,7 +44,7 @@ function BetsProvider({ children }) {
   const updateBubbleColor = (bet) => {
     bets.map((bet) => {
       const bubble = document.getElementById(bet.id);
-      bet.user === 1
+      bet.user === 0
         ? bubble.classList.remove('random')
         : bubble.classList.add('random');
       return { ...bubble };
